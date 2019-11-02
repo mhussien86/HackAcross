@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">HackAcross</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string-array name="Food_Groups">
+        <item>Priority A</item>
+        <item>Priority B</item>
+        <item>Priority C</item>
+    </string-array>
+
+    <string-array name="Crops_A">
+        <item>Fire</item>
+        <item>Risk2</item>
+    </string-array>
+    <string-array name="Crops_B">
+        <item>Storm</item>
+        <item>Risk2</item>
+    </string-array>
+    <string-array name="Crops_C">
+        <item>Risk3</item>
+        <item>Risk4</item>
+    </string-array>
+
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="title_section1">Fourm</string>
+    <string name="title_section2">Logout</string>
+    <string name="title_section3">Maps</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+    <string name="title_activity_register">RegisterActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
