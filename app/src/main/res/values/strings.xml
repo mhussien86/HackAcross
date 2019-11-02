@@ -2,24 +2,22 @@
     <string name="app_name">HackAcross</string>
     <string name="title_activity_maps">Map</string>
 
-    <string-array name="Food_Groups">
-        <item>Priority A</item>
-        <item>Priority B</item>
-        <item>Priority C</item>
-    </string-array>
+<!--    <string-array name="Food_Groups">-->
+<!--        <item>Priority A</item>-->
+<!--        <item>Priority B</item>-->
+<!--        <item>Priority C</item>-->
+<!--    </string-array>-->
 
     <string-array name="Crops_A">
         <item>Fire</item>
-        <item>Risk2</item>
     </string-array>
     <string-array name="Crops_B">
-        <item>Storm</item>
-        <item>Risk2</item>
+        <item>Accident</item>
     </string-array>
-    <string-array name="Crops_C">
-        <item>Risk3</item>
-        <item>Risk4</item>
-    </string-array>
+<!--    <string-array name="Crops_C">-->
+<!--        <item>Risk3</item>-->
+<!--        <item>Risk4</item>-->
+<!--    </string-array>-->
 
 
     <string name="title_activity_splash">SplashActivity</string>

@@ -1,0 +1,47 @@
+[
+    {
+        "type": "fire",
+        "title": "Räddningstjänsten har fått flera samtal om att det brinner på en balkong i ett flerfamiljsfastighet i Hökarängen.",
+        "lat": 59.329324,
+        "long": 18.068581,
+        "time": "2019-11-02 15:24:44 +01:00",
+        "source": "Polisens händelser",
+        "url": "https://polisen.se/aktuellt/handelser/2019/november/2/02-november-1524-brand-stockholm/"
+    },
+    {
+        "type": "fire",
+        "title": "Brand i bostad i centrala Östersund.",
+        "lat": 63.176683,
+        "long": 14.636068,
+        "time": "2019-11-02 13:31:58 +01:00",
+        "source": "Polisens händelser",
+        "url": "https://polisen.se/aktuellt/handelser/2019/november/2/02-november-1331-brand-ostersund/"
+    },
+    {
+        "type": "fire",
+        "title": "Brand i flerfamiljshus",
+        "lat": 59.939637,
+        "long": 16.858759,
+        "time": "2019-11-02 9:02:02 +01:00",
+        "source": "Polisens händelser",
+        "url": "https://polisen.se/aktuellt/handelser/2019/november/2/02-november-0902-brand-heby/"
+    },
+    {
+        "type": "fire",
+        "title": "Larm om brand i byggnad. ",
+        "lat": 58.707488,
+        "long": 15.773595,
+        "time": "2019-11-02 9:19:22 +01:00",
+        "source": "Polisens händelser",
+        "url": "https://polisen.se/aktuellt/handelser/2019/november/2/02-november-0919-brand-finspang/"
+    },
+    {
+        "type": "fire",
+        "title": "Brand i byggnad Villa (Landskrona)",
+        "lat": 56.0442,
+        "long": 12.7041,
+        "time": "Sat, 02 Nov 2019 13:38:43 +0000",
+        "source": "Helsingborg Alarm RSS",
+        "url": "http://helsingborg.se/kommun-och-politik/vid-olyckor-och-kris/sok-larm/#alarm-34907"
+    }
+]

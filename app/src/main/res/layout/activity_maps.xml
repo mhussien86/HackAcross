@@ -13,31 +13,38 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:gravity="right"
+            android:layout_gravity="left"
+            android:gravity="left"
             android:orientation="horizontal">
 
             <Spinner
                 android:id="@+id/groupsSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:entries="@array/Food_Groups"
-                android:padding="15dp" />
+                android:layout_marginRight="10dp"
+                android:entries="@array/Crops_B"
+                android:padding="10dp" />
+
+            <CheckBox
+                android:id="@+id/showaccidents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="15dp"
+                android:text="Show" />
 
             <Spinner
                 android:id="@+id/cropsSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="10dp"
                 android:entries="@array/Crops_A"
-                android:padding="15dp" />
+                android:padding="10dp" />
 
             <CheckBox
-                android:id="@+id/solution"
+                android:id="@+id/showfires"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="10dp"
                 android:drawablePadding="15dp"
                 android:text="Show" />
         </LinearLayout>
