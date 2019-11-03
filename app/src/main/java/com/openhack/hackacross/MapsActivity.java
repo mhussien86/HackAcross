@@ -4,25 +4,27 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.TileOverlay;
+import com.google.android.gms.maps.model.Marker;
+import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterManager;
-import com.google.maps.android.heatmaps.HeatmapTileProvider;
+import com.openhack.hackacross.adapter.CustomInfoViewAdapter;
 import com.openhack.hackacross.data.CrissAPI;
 import com.openhack.hackacross.data.NetworkClient;
 import com.openhack.hackacross.models.CrissData;
 
 import org.json.JSONException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -30,13 +32,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback{
 
     private GoogleMap mMap;
     Spinner groupsSpinner;
     Spinner cropsSpinner;
     CheckBox showFires, showAccidents;
-    TileOverlay mOverlay;
+    private ClusterManager<MyItem> mClusterManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,21 +55,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(60.503186, 18.126446), 5.0f));
-        mClusterManager = new ClusterManager<MyItem>(this, mMap);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
         showFires.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -97,44 +89,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    private ArrayList<LatLng> readFireItems(List<CrissData> response, int image) throws JSONException {
-        ArrayList<LatLng> list = new ArrayList<LatLng>();
+    private void readFireItems(List<CrissData> response, int image) {
         MyItem offsetItem = null;
         String title = "This is FIRE";
         String snippet = "and this is the snippet.";
+
         for (CrissData criss : response) {
             double lat = criss.getLat();
             double lng = criss.getLng();
-            list.add(new LatLng(lat, lng));
             offsetItem = new MyItem(lat, lng, title, snippet, image);
             mClusterManager.addItem(offsetItem);
         }
-        mClusterManager.setRenderer(new OwnIconRendered(getApplicationContext(), mMap, mClusterManager));
-        return list;
+        mClusterManager.cluster();
+
     }
 
-    private ClusterManager<MyItem> mClusterManager;
-    HeatmapTileProvider mProvider;
-
-    private void setUpClusterer(int resource) {
+    private void setUpClusterer() {
         // Position the map.
-        mMap.getUiSettings().setZoomControlsEnabled(true);
-        // Initialize the manager with the context and the map.
-        // (Activity extends context, so we can pass 'this' in the constructor.)
+        mClusterManager = new ClusterManager<MyItem>(this, mMap);
 
-
-        // Point the map's listeners at the listeners implemented by the cluster
-        // manager.
-        mMap.setOnCameraIdleListener(mClusterManager);
-        mMap.setOnMarkerClickListener(mClusterManager);
-        mClusterManager.setOnClusterItemClickListener(new ClusterManager.OnClusterItemClickListener<MyItem>() {
-            @Override
-            public boolean onClusterItemClick(MyItem item) {
-                //put your code here
-
-                return false;
-            }
-        });
+        OwnIconRendered ownIconRendered = new OwnIconRendered(getApplicationContext(), mMap, mClusterManager);
+        mClusterManager.setRenderer(ownIconRendered);
 
     }
 
@@ -157,12 +132,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onResponse(Call call, Response response) {
                 if (response.body() != null) {
                     List<CrissData> crissResponse = (List<CrissData>) response.body();
-                    setUpClusterer(R.drawable.fire);
-                    try {
-                        readFireItems(crissResponse, R.drawable.fire);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    setUpClusterer();
+                    readFireItems(crissResponse, R.drawable.fire);
+
                 }
             }
 
@@ -192,12 +164,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onResponse(Call call, Response response) {
                 if (response.body() != null) {
                     List<CrissData> crissResponse = (List<CrissData>) response.body();
-                    setUpClusterer(R.drawable.fire);
-                    try {
-                        readFireItems(crissResponse, R.drawable.accident);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    setUpClusterer();
+                    readFireItems(crissResponse, R.drawable.accident);
                 }
             }
 
@@ -207,4 +175,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
     }
+
 }
