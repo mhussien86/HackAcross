@@ -1,5 +1,7 @@
-# Red Cross Crisis Locator: A project for Openhack 2019 by Hack-A-Cross (https://github.com/openhack-hackacross/openhack-sthlm-2019/blob/master/README.md)
-This is an entry for the Stockholm Openhack 2019. It is an application for collecting news from specific RSS-feeds and filtering these to map and show news related to certain keywords (fire, accident) in order to assist in emergency administration of volunteers. 
+# Red Cross Crisis Locator: A project for Openhack 2019 by Hack-A-Cross 
+This is an entry for the Stockholm Openhack 2019. It consists of two sides.
+Backend -> It is an application for collecting news from specific RSS-feeds and filtering these to map and show news related to certain keywords (fire, accident) in order to assist in emergency administration of volunteers. 
+Android Mobile app -> Android app that is calling a service to fetch the crisis location and information like source of the news and type of criss.
 
 ## Goal
 The goal is to provide a filtered visualisation of data that can help predict emergency situations for second line help organisations such as the Swedish Red Cross. By combining different data sources, such as news items and wheather conditions, we aim to give a view where administrators can find relevant information to help in assessing if a situation will or has just occured in order to provide faster help. The app is currently localised to Sweden but can be scaled for similar projects elsewhere. 
@@ -12,6 +14,8 @@ A basic app that pulls RSS-feeds from: the Swedish Police, the Swedish Emergency
 ### Technical Specifications
 Backend is javascript and node.js, and frontend is java. For natural language processing, we use 'natural' for node.js. The natural language processing currently only tokenize the items and performs no actual analysis and categorization. 
 Backend can be found in this Repo (https://github.com/openhack-hackacross/openhack-sthlm-2019/blob/master/README.md)
+
+Frontend is an android mobile app that calls the service and show the crisis details (location-source-link...etc).
 
 ## Roadmap
 
@@ -29,8 +33,13 @@ Several improvements could be made for performande. This includes gathering and 
 ## How To Run
 
 ### Requirements:
+For backend 
 - Node.js
 - npm
+
+For frontend 
+- Android SDK 
+- Android Studio
 
 ### Instructions:
 1. Clone the repository
